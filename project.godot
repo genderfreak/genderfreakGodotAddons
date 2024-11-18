@@ -10,9 +10,9 @@ config_version=5
 
 [application]
 
-config/name="DeadChurches"
+config/name="genderfreakGodotAddons"
 run/main_scene="res://addons/crpg_character_controller/demo.tscn"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
@@ -21,7 +21,7 @@ project/assembly_name="DeadChurches"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg", "res://addons/crpg_character_controller/plugin.cfg", "res://addons/feld_playback_for_godot_inks/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotInk/plugin.cfg", "res://addons/crpg_character_controller/plugin.cfg", "res://addons/feld_playback_for_godot_ink/plugin.cfg")
 
 [file_customization]
 
