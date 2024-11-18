@@ -1,0 +1,6 @@
+addons/GodotInk
+# Godot 4+ specific ignores
+.godot/
+/android/
+/GodotInk.svg
+/GodotInk.svg.import

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6kji2k1f0vvr"]
+
+[ext_resource type="PackedScene" uid="uid://dstfrvj7s830i" path="res://addons/crpg_character_controller/player_character.tscn" id="1_25qsc"]
+[ext_resource type="Script" path="res://addons/crpg_character_controller/interactable_component.gd" id="2_ramtu"]
+[ext_resource type="Material" uid="uid://djah4e45iwpkq" path="res://addons/crpg_character_controller/hover_outline.tres" id="3_1ca0t"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_74agr"]
+vertices = PackedVector3Array(-5.10661, 0, -4.85661, -3.60661, 0, -3.10661, -2.35661, 0, -3.35661, -0.106606, 0, -10.1066, -2.10661, 0, -2.85661, 4.64339, 0, -5.35661, -1.60661, 0, -1.35661, -3.35661, 0, -0.606606, -5.85661, 0, 4.14339, 0.143394, 0, 10.1434, 10.1434, 0, 0.143394, -4.35661, 0, -2.60661, -4.35661, 0, -1.60661, -10.1066, 0, -0.106606)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(4, 2, 5), PackedInt32Array(5, 2, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(6, 4, 5), PackedInt32Array(5, 10, 6), PackedInt32Array(6, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(0, 1, 11), PackedInt32Array(11, 12, 0), PackedInt32Array(0, 12, 13), PackedInt32Array(7, 8, 12), PackedInt32Array(12, 8, 13)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb41n"]
+albedo_color = Color(0.27, 0.27, 0.27, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q74e1"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("1_25qsc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="OmniLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.66065, 0.563975, -0.495453, 0.0691683, 0.611455, 0.78825, 0.747501, -0.555027, 0.364948, -2.46755, 4.86714, 0.494261)
+light_energy = 1.5
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_74agr")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -1, 0)
+use_collision = true
+size = Vector3(15, 1, 15)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -3, 0, -2)
+material = SubResource("StandardMaterial3D_wb41n")
+
+[node name="interactableComponent" type="Node3D" parent="NavigationRegion3D/CSGBox3D2" node_paths=PackedStringArray("mesh", "collision_object")]
+script = ExtResource("2_ramtu")
+mesh = NodePath("..")
+collision_object = NodePath("../StaticBody3D")
+hover_overlay = ExtResource("3_1ca0t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/CSGBox3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/CSGBox3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_q74e1")

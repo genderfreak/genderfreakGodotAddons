@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://hm47x20t1i0l"]
+
+[node name="Choice" type="LinkButton"]
+text = "1. Choice 1"

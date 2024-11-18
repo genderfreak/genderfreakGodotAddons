@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtu3ppjndtpvl"]
+
+[ext_resource type="Script" path="res://addons/feld_playback_for_godot_ink/dialog.gd" id="1_y2jww"]
+[ext_resource type="Resource" uid="uid://qsew3boli302" path="res://addons/feld_playback_for_godot_ink/TheIntercept.ink" id="2_g8fbs"]
+[ext_resource type="PackedScene" uid="uid://cnll05npog6wp" path="res://addons/feld_playback_for_godot_ink/dialogue_continue_button.tscn" id="3_n7cl1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s52hf"]
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y2jww")
+story = ExtResource("2_g8fbs")
+
+[node name="TextFrame" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.680556
+anchor_top = 0.0308642
+anchor_right = 0.975556
+anchor_bottom = 0.930864
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="TextFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TextFrame/MarginContainer"]
+layout_mode = 2
+
+[node name="TextContainer" type="VBoxContainer" parent="TextFrame/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Continue" parent="TextFrame/MarginContainer/ScrollContainer/TextContainer" instance=ExtResource("3_n7cl1")]
+layout_mode = 2
+
+[node name="EndSpacer" type="Control" parent="TextFrame/MarginContainer/ScrollContainer/TextContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="PortraitFrame" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.541667
+anchor_top = 0.0524691
+anchor_right = 0.680667
+anchor_bottom = 0.372469
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PortraitFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Portrait" type="TextureRect" parent="PortraitFrame/MarginContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_s52hf")

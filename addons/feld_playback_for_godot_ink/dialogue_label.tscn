@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dyvlsgryt40gt"]
+
+[node name="Text" type="RichTextLabel"]
+offset_right = 1.0
+offset_bottom = 276.0
+bbcode_enabled = true
+text = "Sample text."
+fit_content = true
+scroll_active = false
