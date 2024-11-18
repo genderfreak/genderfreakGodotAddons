@@ -14,8 +14,9 @@ radius = 0.4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cjmlm"]
 radius = 0.4
 
-[node name="PlayerCharacter" type="CharacterBody3D"]
+[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("1_fxsgv")
+navigation_agent = NodePath("NavigationAgent3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_vvdoh")
@@ -25,6 +26,7 @@ shape = SubResource("CapsuleShape3D_cjmlm")
 
 [node name="OrbitCamera" parent="." instance=ExtResource("2_4fyty")]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." node_paths=PackedStringArray("actor")]
 debug_enabled = true
 script = ExtResource("4_l4txg")
+actor = NodePath("..")
