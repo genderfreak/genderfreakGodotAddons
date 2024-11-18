@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dstfrvj7s830i"]
+[gd_scene load_steps=7 format=3 uid="uid://dstfrvj7s830i"]
 
 [ext_resource type="Script" path="res://addons/crpg_character_controller/player_input.gd" id="1_fxsgv"]
 [ext_resource type="PackedScene" uid="uid://dvn3no8beidt8" path="res://addons/crpg_character_controller/orbit_camera.tscn" id="2_4fyty"]
-[ext_resource type="Script" path="res://addons/crpg_character_controller/orbit_camera.gd" id="3_m67pr"]
 [ext_resource type="Script" path="res://addons/crpg_character_controller/navigation_component.gd" id="4_l4txg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1wm7"]
@@ -15,9 +14,8 @@ radius = 0.4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cjmlm"]
 radius = 0.4
 
-[node name="PlayerCharacter" type="CharacterBody3D" node_paths=PackedStringArray("navigation_agent")]
+[node name="PlayerCharacter" type="CharacterBody3D"]
 script = ExtResource("1_fxsgv")
-navigation_agent = NodePath("NavigationAgent3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_vvdoh")
@@ -26,12 +24,7 @@ mesh = SubResource("CapsuleMesh_vvdoh")
 shape = SubResource("CapsuleShape3D_cjmlm")
 
 [node name="OrbitCamera" parent="." instance=ExtResource("2_4fyty")]
-script = ExtResource("3_m67pr")
-rotation_enabled = false
-camera_limit_x = Vector2(-70, -30)
-zoom_limit = Vector2(7, 14)
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." node_paths=PackedStringArray("actor")]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
 script = ExtResource("4_l4txg")
-actor = NodePath("..")
